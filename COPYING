@@ -1,0 +1,5 @@
+    All source code and documentation in this project are released into the
+public domain.  Please note that binary builds of this project linked
+against the GNU readline library are required to be distributed under the
+GPL, due to readline's licensing.
+

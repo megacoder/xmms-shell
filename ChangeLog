@@ -1,0 +1,95 @@
+Thu Oct 24 12:39:07 UTC 2002  Logan Hanks <logan@vt.edu>
+
+  * Some minor code cleanup
+  * Fixed bug #627911
+
+Wed Oct 23 10:25:36 UTC 2002  Logan Hanks <logan@vt.edu>
+
+  * Big changes of the new Session class to support either xmmsctrl or
+    xmmssess transparently (xmmssess is very experimental right now)
+  * Added SET command for displaying and setting environment variables
+  * Added UNSET command
+  * Added EXEC command (currently just a simple call to system).  When
+    I implement support for sh style backticks, this command will be
+    obsolete.  Such support is several versions away, however.
+
+Wed Oct 23 00:11:03 UTC 2002  Logan Hanks  <logan@vt.edu>
+
+  * Fixed error in reimplementation of the LOAD command
+  * Fixed typo in reimplementation of the FADE command
+  * Added delay in command evaluation loop, so that state changes to XMMS
+    by XMMS-Shell commands can hopefully be reflected in the prompt
+    accurately, but unfortunately this does not work
+  * Fixed error in reimplementation of the WINDOW command
+  * Added doc subdirectory, moved man page and HTML help there
+  * Modified Makefiles so that documentation is included in the source
+    distribution
+  * Released as 0.99.3
+
+Mon Oct 21 22:44:49 UTC 2002  Logan Hanks  <logan@vt.edu>
+
+  * Made changes to how script/interactive input is processed
+  * Added simple customizable prompt support
+
+Mon Oct 21 05:03:31 UTC 2002  Logan Hanks  <logan@vt.edu>
+
+  * Abstracted the xmmsctrl API a tiny bit, which necessitated small changes
+    in the implementation of every command.  Some time will be needed to
+    locate and fix all the tiny bugs I may have introduced in the process.
+  * Added Formatter class (untested currently)
+
+Sat Oct 19 19:49:09 UTC 2002  Logan Hanks  <logan@vt.edu>
+
+  * Added in long-awaited changes to make xmms-shell compile under g++ 3
+    (patches from several sources)
+  * Titles of tracks displayed by LIST are now aligned, and the current
+    track is now marked (request #514146)
+  * RANDOMTRACK renamed to RANDOM-TRACK (alias to RANDOMTRACK also added)
+  * Added CURRENT-TRACK command (request #514146)
+  * Added REMOVE command (request #514146)
+
+Thu Oct 17 19:30:49 UTC 2002  Logan Hanks  <logan@vt.edu>
+
+  * Released as 0.99.1
+  * WINDOW SHOW now has the correct behavior (closes bug #583730)
+  * FADE now advances to next track (closes Debian bug #120161)
+
+Tue Feb 12 01:30:18 UTC 2002  Logan Hanks  <logan@vt.edu>
+
+  * Fixed a typo that caused downvolume to be the same as upvolume (copy and
+    paste is a sign of poor design!)
+  * The quit field of the CommandContext object is now explicitly
+    initialize to false (why didn't g++ -Wall catch this?)
+  * Implemented XMMSQUIT command (idea courtesy of Roderick Schertler)
+  * include/playlist.h is now mentioned in include/Makefile.am
+  * Implemented RANDOMTRACK command, with only a minor attempt at making it
+    seem random.  Rather than hard-coding some behavior for the NEXT and
+    PREVIOUS commands when shuffle-mode is on, RAND could be used instead.
+  * Went ahead and hard-coded some behavior for the NEXT and PREVIOUS
+    commands when shuffle-mode is on.  Note that this only works on versions
+    of XMMS that provide xmms_remote_is_shuffle (I forget which version
+    introduced this).  XMMS's support of this seems really poor, so maybe
+    RANDOMTRACK is better.
+
+Mon Feb 11 03:46:06 UTC 2002  Logan Hanks  <logan@vt.edu>
+
+  * Released as 0.99.0
+  * Massively rewritten
+    - Rewrote how commands are specified and how they provide help text
+    - Implemented simple quoting in the command parser
+    - If readline is enabled, filenames will be properly quoted
+    - In the future, more complex scripting (rather than a simple batch
+      mode) may be implemented, so command system redesigned to reflect this
+    - All commands should now give some sort of feedback
+    - All of the functionality of 0.2.2 should be emulated
+
+
+Thu May 18 02:46:59 UTC 2000  Logan Hanks  <logan@vt.edu>
+
+  * Released as 0.2.2
+  * Moved old changes to ChangeLog.old, switched to new format
+  * Made more improvements to the installation process
+  * Added resetdevice command
+  * Added preamp and band commands (only available with a very
+    recent copy of XMMS checked out from CVS)
+
